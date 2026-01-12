@@ -14,7 +14,6 @@ if (isset($_POST['update_role'])) {
         $stmt->execute();
     }
 }
-
 // Xóa user (không xóa admin)
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
@@ -25,7 +24,6 @@ if (isset($_GET['delete'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -36,6 +34,9 @@ if (isset($_GET['delete'])) {
 <body>
 
 <div class="container mt-4">
+<a href="dashboard.php" class="btn btn-secondary mb-3">
+⬅ Trở về Dashboard
+</a>
 <h2 class="mb-3">Quản lý người dùng</h2>
 
 <table class="table table-bordered text-center align-middle">
