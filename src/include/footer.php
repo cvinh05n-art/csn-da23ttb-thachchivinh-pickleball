@@ -39,7 +39,6 @@
     <div class="container">
         <div class="row align-items-start">
 
-            <!-- CỘT 1: PICKLEBALL + MÔ TẢ (NẰM NGANG) -->
             <div class="col-md-4 mb-3">
                 <div class="footer-brand">
                     <h5 class="me-3 mb-0">Pickleball</h5>
@@ -60,12 +59,19 @@
                 </ul>
             </div>
             <!-- CỘT 3: LIÊN KẾT (DỌC) -->
-            <div class="col-md-4 mb-3">
-                <h5>Liên kết</h5>
-                <ul class="list-unstyled"> 
-                </ul>
-            </div>
-
+           <div class="col-md-4 mb-3">
+           <h5>Liên kết</h5>
+           <div class="footer-icons">
+                <a href="https://github.com/cvinh05n-art" target="_blank" title="GitHub">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <br>
+                 <a href="contact.php" title="Liên hệ">
+            <i class="fa-solid fa-envelope">
+            </i> Liên hệ
+        </a>
+    </div>
+</div>
         </div>
 
         <hr>
