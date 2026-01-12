@@ -38,7 +38,7 @@ session_start();
                 <?php if(isset($_SESSION['user_role']) && 
                 ($_SESSION['user_role'] === "admin" || $_SESSION['user_role'] === "chusan")) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="src/admin/dashboard.php">Quản lý</a>
+                    <a class="nav-link" href="admin/dashboar.php">Quản lý</a>
                 </li>
             <?php } ?>
             <?php }
