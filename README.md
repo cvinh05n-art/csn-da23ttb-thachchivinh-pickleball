@@ -1,7 +1,6 @@
 # Thạch Chí Vĩnh - DA23TTB - 110123063
 # Mail: 110123063@st.tvu.edu.vn
 # SĐT: 0383415367
-# 🏓 Pickleball Court Booking Website
 
 Website quản lý và đặt sân Pickleball được xây dựng bằng **PHP + MySQL**, phục vụ cho:
 - Người chơi đặt sân
@@ -38,8 +37,4 @@ Website quản lý và đặt sân Pickleball được xây dựng bằng **PHP 
 - **Backend:** PHP  
 - **Database:** MySQL  
 - **Web Server:** Apache (XAMPP)
-
----
-
-## 📁 Cấu trúc thư mục
 
