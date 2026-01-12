@@ -31,7 +31,7 @@
 
 <div class="admin-sidebar">
     <h3 class="text-center mb-3">ADMIN</h3>
-    <a href="dashboard.php">📊 Dashboard</a>
+    <a href="dashboar.php">📊 Dashboard</a>
     <a href="booking.php">📅 Quản lý đặt sân</a>
     <a href="users.php">👤 Quản lý người dùng</a>
     <a href="events.php">🎉 Sự kiện</a>
