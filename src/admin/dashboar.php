@@ -81,7 +81,9 @@ if ($checkSan->num_rows > 0) {
 <hr class="my-4">
 
 <div class="d-flex gap-3">
+    <a href="booking.php" class="btn btn-primary">📅 Quản lý lịch đặt</a>
     <a href="users.php" class="btn btn-primary">👤 Quản lý người dùng</a>
+    <a href="san.php" class="btn btn-primary">🏟️ Quản lý sân</a>
     <a href="../index.php" class="btn btn-secondary">🏠 Về trang chủ</a>
 </div>
 
