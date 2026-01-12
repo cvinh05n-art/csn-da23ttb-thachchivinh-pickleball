@@ -34,7 +34,7 @@ if (isset($_GET['delete'])) {
 <body>
 
 <div class="container mt-4">
-<a href="dashboard.php" class="btn btn-secondary mb-3">
+<a href="dashboar.php" class="btn btn-secondary mb-3">
 ⬅ Trở về Dashboard
 </a>
 <h2 class="mb-3">Quản lý người dùng</h2>
