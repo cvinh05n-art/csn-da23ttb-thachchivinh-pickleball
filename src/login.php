@@ -1,119 +1,64 @@
-<?php include("config.php"); 
-session_start(); 
+<?php
+include("config.php");
+session_start();
+
+$loginError = '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = trim((string) ($_POST["email"] ?? ''));
+    $password = (string) ($_POST["password"] ?? '');
+
+    $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $user = $stmt->get_result()->fetch_assoc();
+
+    if ($user && password_verify($password, $user["password"])) {
+        session_regenerate_id(true);
+        $_SESSION["user_id"] = $user["id"];
+        $_SESSION["user"] = $user["username"];
+        $_SESSION["user_role"] = $user["role"];
+        header("Location: index.php");
+        exit;
+    }
+    $loginError = 'Email hoặc mật khẩu không đúng.';
+}
 ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <title>Đăng nhập</title>
+    <title>Đăng nhập | Pickleball Trung Ngọc</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap cdn/KT2/css/bootstrap.min.css">
-<style> 
-/* CSS cho form đăng nhập */
- body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4CAF50, #2e8b57);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .login-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 4 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: 700;
-        }
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 15px;
-
-        } 
-        button {
-            width: 95%;
-            padding: 12px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #45a049;
-        }
-        a{
-            color: #2e8b57;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<style>
+    :root { --ink: #193129; --green: #168454; --soft: #eef8f2; }
+    body { min-height: 100vh; margin: 0; color: var(--ink); background: linear-gradient(135deg, #eaf7ef, #f8fbf9); }
+    .auth-shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .auth-card { width: min(100%, 430px); padding: 36px; background: #fff; border: 1px solid #dfeae3; border-radius: 20px; box-shadow: 0 18px 45px rgba(25,49,41,.1); }
+    .brand-mark { display: inline-grid; width: 42px; height: 42px; place-items: center; margin-bottom: 18px; border-radius: 13px; background: var(--soft); font-size: 1.4rem; }
+    .auth-card h1 { font-weight: 800; letter-spacing: -.03em; }
+    .form-control { min-height: 48px; border-color: #d7e4dc; }
+    .btn-success { min-height: 48px; background: var(--green); border-color: var(--green); }
+    .btn-success:hover { background: #106944; border-color: #106944; }
+    .auth-link { color: var(--green); text-decoration: none; font-weight: 600; }
+    .auth-link:hover { text-decoration: underline; }
+</style>
 </head>
-<body class="container p-5">
-<div class="login-box">
-<h2>Đăng nhập</h2>
-<form method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Mật khẩu" required>
-    <button type="submit" name="login">Đăng nhập</button>
-</form>
-<p class="mt-3">Chưa có tài khoản? <a href="Sigin.php">Đăng ký ngay</a></p>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $email = trim($_POST["email"]);
-    $password = trim($_POST["password"]);
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $res = $stmt->get_result();
-
-    if ($res->num_rows == 1) {
-        $user = $res->fetch_assoc();
-
-        if (password_verify($password, $user["password"])) {
-           $_SESSION["user_id"] = $user["id"];
-            $_SESSION["user"] = $user["username"];
-            $_SESSION["user_role"] = $user["role"];
-            header("Location: index.php");
-            exit;
-        } else {
-            echo "<div class='alert alert-danger mt-3 text-center'>
-              Sai mật khẩu!
-              </div>";
-
-        }
-    } else
-    {
-        echo "<div class='alert alert-danger mt-3 text-center'>
-          Email không tồn tại!
-          </div>";
-    }
-}
-?>
-</div>
+<body>
+<main class="auth-shell">
+<section class="auth-card">
+    <a class="text-decoration-none text-dark" href="index.php"><span class="brand-mark" aria-hidden="true">🏓</span><div class="small text-success fw-semibold">PICKLEBALL TRUNG NGỌC</div></a>
+    <h1 class="h2 mt-3 mb-2">Chào mừng trở lại</h1>
+    <p class="text-secondary mb-4">Đăng nhập để quản lý tài khoản và lịch đặt sân.</p>
+    <?php if ($loginError) { ?><div class="alert alert-danger" role="alert"><?= htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8') ?></div><?php } ?>
+    <form method="POST">
+        <div class="mb-3"><label class="form-label" for="email">Email</label><input id="email" class="form-control" type="email" name="email" autocomplete="email" required></div>
+        <div class="mb-4"><label class="form-label" for="password">Mật khẩu</label><input id="password" class="form-control" type="password" name="password" autocomplete="current-password" required></div>
+        <button class="btn btn-success w-100" type="submit">Đăng nhập</button>
+    </form>
+    <p class="text-center text-secondary mt-4 mb-0">Chưa có tài khoản? <a class="auth-link" href="Sigin.php">Đăng ký ngay</a></p>
+</section>
+</main>
 </body>
 
 </html>

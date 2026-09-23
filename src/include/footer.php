@@ -36,6 +36,10 @@
 
 </style>
 <footer class="footer mt-5">
+    <?php
+    $isNestedPage = in_array(basename(dirname($_SERVER['SCRIPT_NAME'])), ['admin', 'chusan'], true);
+    $siteRoot = $isNestedPage ? '../' : '';
+    ?>
     <div class="container">
         <div class="row align-items-start">
 
@@ -66,7 +70,7 @@
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
             <br>
-                 <a href="contact.php" title="Liên hệ">
+                 <a href="<?= $siteRoot ?>contact.php" title="Liên hệ">
             <i class="fa-solid fa-envelope">
             </i> Liên hệ
         </a>

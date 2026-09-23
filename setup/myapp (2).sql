@@ -34,7 +34,10 @@ CREATE TABLE `booking` (
   `ngaydat` date NOT NULL,
   `giodat` time NOT NULL,
   `note` text DEFAULT NULL,
-  `STATUS` varchar(20) DEFAULT 'pending'
+  `STATUS` varchar(20) DEFAULT 'pending',
+  `total_amount` int(11) NOT NULL DEFAULT 0,
+  `deposit_amount` int(11) NOT NULL DEFAULT 0,
+  `deposit_status` varchar(20) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

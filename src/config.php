@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = ""; // XAMPP để trống
-$db   = "myapp"; // Tên database trên XAMPP
+$db   = "mysql"; // Tên database trên XAMPP
 
 $conn = new mysqli($host, $user, $pass, $db);
 

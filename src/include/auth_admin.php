@@ -1,17 +1,14 @@
 <?php
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
- if( !isset($_SESSION["user_role"]) ||
-     ($_SESSION["user_role"] !== "admin" && $_SESSION["user_role"] !== "chusan") ) {
-    echo "
-    <div class='container mt-5'>
-        <div class='alert alert-danger text-center'>
-            <h4>Bạn không có quyền truy cập trang này!</h4>
-        </div>
-        <script>
-            setTimeout(() => { window.location.href = '../index.php'; }, 3000);
-        </script>
-    </div>";
+if (($_SESSION['user_role'] ?? null) !== 'admin') {
+    header('Location: ../login.php');
     exit;
- }
+}
+
+if (empty($_SESSION['admin_csrf'])) {
+    $_SESSION['admin_csrf'] = bin2hex(random_bytes(32));
+}
 ?>

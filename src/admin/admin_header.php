@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="../bootstrap cdn/KT2/css/bootstrap.min.css">
-<script src="../bootstrap cdn/KT2/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
     .admin-sidebar {
@@ -34,7 +34,5 @@
     <a href="dashboar.php">📊 Dashboard</a>
     <a href="booking.php">📅 Quản lý đặt sân</a>
     <a href="users.php">👤 Quản lý người dùng</a>
-    <a href="events.php">🎉 Sự kiện</a>
-    <a href="courts.php">🏟 Quản lý sân</a>
     <a href="../index.php" class="text-warning">⬅ Quay lại trang chủ</a>
 </div>

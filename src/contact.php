@@ -8,8 +8,8 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pickleball Center</title>
-        <link rel="stylesheet" href="boostrap cdn/KT2/css/bootstrap.min.css">
-        <script src="bootstrap cdn/KT2/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
     <?php include("include/header.php"); ?>
@@ -18,7 +18,7 @@ session_start();
         <h2 class="text-center mb-4">Liên hệ với chúng tôi</h2>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form action="process_contact.php" method="post">
+                <form action="contact.php" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Họ và tên:</label>
                         <input type="text" class="form-control" id="name" name="name" required>
